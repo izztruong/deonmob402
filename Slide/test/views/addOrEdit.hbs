@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">{{title}}</h2>
+                    {{#if add}}
+                    <form action="/add" method="post">
+                        <div class="form-outline mb-4">
+                            <input type="text" name="tensach" class="form-control form-control-lg"
+                                placeholder="Tên sách" required />
+    
+                        </div>
+    
+                        <div class="form-outline mb-4">
+                            <input type="text" name="anhbia" class="form-control form-control-lg" 
+                                placeholder="Ảnh bìa" required />
+    
+                        </div>
+    
+                        <div class="form-outline mb-4">
+                            <input type="number" name="namxuatban" class="form-control form-control-lg" 
+                                placeholder="Năm xuất bản" required />
+    
+                        </div>
+    
+                        <div class="form-outline mb-4">
+                            <input type="text" name="giaban" step="1000" class="form-control form-control-lg" required
+                            placeholder="Giá bán" />
+    
+                        </div>
+    
+                        
+    
+                        <div class="d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">SAVE</button>
+                        </div>
+    
+    
+    
+                    </form>
+                    {{/if}}
+                    {{#if edit}}
+                    <form action="/edit" method="post">
+    
+                        <div class="form-outline mb-4">
+                            <input type="text" name="_id" value="{{item._id}}" class="form-control form-control-lg" 
+                                 required readonly />
+    
+                        </div>
+    
+                        <div class="form-outline mb-4">
+                            <input type="text" name="tensach" class="form-control form-control-lg" value="{{item.tensach}}"
+                                placeholder="Tên Sách" required />
+    
+                        </div>
+    
+                        <div class="form-outline mb-4">
+                            <input type="text" name="anhbia" class="form-control form-control-lg" value="{{item.anhbia}}"
+                                placeholder="Ảnh bìa" required />
+    
+                        </div>
+    
+                        <div class="form-outline mb-4">
+                            <input type="number" name="namxuatban" class="form-control form-control-lg" required
+                                value="{{item.namxuatban}}" placeholder="Năm xuất bản" />
+    
+                        </div>
+    
+                        <div class="form-outline mb-4">
+                            <input type="number" name="giaban" class="form-control form-control-lg" required
+                                value="{{item.giaban}}" placeholder="Giá bán" />
+    
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">SAVE</button>
+                        </div>
+    
+    
+    
+                    </form>
+                    {{/if}}
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

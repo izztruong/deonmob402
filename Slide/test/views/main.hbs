@@ -1,0 +1,60 @@
+<div class="container md-5">
+    <div class="navbar navbar-expand-sm bg-light navbar-light"><a href="/formAdd" class="btn-primary btn">Thêm mới</a>
+    <form  class=" d-flex" action="/search" method="post">
+        <input name="sach" class="form-control me-2" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form> </div>
+    <p>{{mess}}</p>
+    {{#if list}}
+    <div class="table">
+        <table class="table-bordered table">
+            <tr>
+            <thead class="table-dark" style="text-align: center;">
+                <th>Id sách</th>
+                <th>Tên sách</th>
+                <th>Ảnh sách</th>
+                <th>Năm xuất bản</th>
+                <th>Giá bán</th>
+                <th></th>
+            </thead>
+            </tr>
+            <tbody>
+                {{#each listbook}}
+                <tr>
+                <td class="col-sm-2">{{this._id}}</td>
+                <td>{{this.tensach}}</td>
+                <td class="col-sm-3"><img class=" mx-auto d-block rounded img-fluid" src="{{this.anhbia}}" alt=""></td>
+                <td>{{this.namxuatban}}</td>
+                <td>{{this.giaban}}</td>
+                <td class="col-sm-2" style="text-align: center;"><a href="/formEdit/{{this._id}}" class="btn btn-primary btn-sm">EDIT</a>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#delete{{this._id}}">
+                    Delete
+                </button>
+                <div class="modal fade" id="delete{{this._id}}" tabindex="-1" aria-labelledby="delete{{this._id}}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="delete{{this._id}}">Delete user?
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Do you want delete this user?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                <form action="/xoa/{{this._id}}" method="post">
+                                    <input type="hidden" value={{this._id}} name="_id">
+                                    <button type="submit" class="btn btn-primary">Yes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div></td>
+            </tbody>
+            </tr>
+             {{/each}}
+        </table>
+    </div>
+    {{/if}}
+</div>
